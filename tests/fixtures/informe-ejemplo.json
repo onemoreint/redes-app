@@ -1,0 +1,187 @@
+{
+ "origen": "IC Plantilla de informe de redes sociales 8857.xlsx, hoja Report Data",
+ "estaSemana": [
+  {
+   "fecha": "2018-08-30",
+   "contenido": "Contenido 1",
+   "compartidos": 89,
+   "meGusta": 22,
+   "menciones": 100,
+   "clics": 300,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-31",
+   "contenido": "Contenido 2",
+   "compartidos": 150,
+   "meGusta": 200,
+   "menciones": 150,
+   "clics": 500,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-01",
+   "contenido": "Contenido 3",
+   "compartidos": 89,
+   "meGusta": 300,
+   "menciones": 88,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-02",
+   "contenido": "Contenido 5",
+   "compartidos": 95,
+   "meGusta": 140,
+   "menciones": 55,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-02",
+   "contenido": "Contenido 4",
+   "compartidos": 55,
+   "meGusta": 55,
+   "menciones": 77,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-03",
+   "contenido": "Contenido 8",
+   "compartidos": 77,
+   "meGusta": 99,
+   "menciones": 66,
+   "clics": 200,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-03",
+   "contenido": "Contenido 7",
+   "compartidos": 86,
+   "meGusta": 156,
+   "menciones": 55,
+   "clics": 357,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-04",
+   "contenido": "Contenido 6",
+   "compartidos": 45,
+   "meGusta": 577,
+   "menciones": 44,
+   "clics": 597,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-05",
+   "contenido": "Contenido 11",
+   "compartidos": 22,
+   "meGusta": 215,
+   "menciones": 33,
+   "clics": 215,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-09-05",
+   "contenido": "Contenido 19",
+   "compartidos": 111,
+   "meGusta": 211,
+   "menciones": 22,
+   "clics": 155,
+   "alcance": 1000
+  }
+ ],
+ "semanaAnterior": [
+  {
+   "fecha": "2018-08-23",
+   "contenido": "Contenido 22",
+   "compartidos": 89,
+   "meGusta": 22,
+   "menciones": 100,
+   "clics": 300,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-23",
+   "contenido": "Contenido 25",
+   "compartidos": 150,
+   "meGusta": 200,
+   "menciones": 150,
+   "clics": 500,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-24",
+   "contenido": "Contenido 36",
+   "compartidos": 89,
+   "meGusta": 300,
+   "menciones": 88,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-25",
+   "contenido": "Contenido 56",
+   "compartidos": 95,
+   "meGusta": 140,
+   "menciones": 55,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-25",
+   "contenido": "Contenido 44",
+   "compartidos": 55,
+   "meGusta": 55,
+   "menciones": 77,
+   "clics": 150,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-25",
+   "contenido": "Contenido 83",
+   "compartidos": 77,
+   "meGusta": 99,
+   "menciones": 66,
+   "clics": 200,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-27",
+   "contenido": "Contenido 73",
+   "compartidos": 86,
+   "meGusta": 156,
+   "menciones": 55,
+   "clics": 357,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-28",
+   "contenido": "Contenido 62",
+   "compartidos": 45,
+   "meGusta": 577,
+   "menciones": 44,
+   "clics": 597,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-29",
+   "contenido": "Contenido 17",
+   "compartidos": 22,
+   "meGusta": 215,
+   "menciones": 33,
+   "clics": 215,
+   "alcance": 1000
+  },
+  {
+   "fecha": "2018-08-29",
+   "contenido": "Contenido 36",
+   "compartidos": 111,
+   "meGusta": 211,
+   "menciones": 22,
+   "clics": 155,
+   "alcance": 1000
+  }
+ ]
+}

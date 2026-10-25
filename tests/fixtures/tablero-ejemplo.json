@@ -1,0 +1,767 @@
+{
+ "origen": "Plantilla de plan de publicación en redes sociales con tablero.xlsx, hoja Social Media Posting Plan Dash",
+ "canales": [
+  "FACEBOOK",
+  "Instagram",
+  "GORJEO",
+  "Blog",
+  "LinkedIn",
+  "Tiktok",
+  "Snapchat",
+  "Pinterest",
+  "Tumblr",
+  "YOUTUBE",
+  "Otros 1",
+  "Otros 2",
+  "Otros 3"
+ ],
+ "filas": [
+  {
+   "semana": 1,
+   "dia": "LUNES",
+   "tipos": [
+    "texto"
+   ],
+   "canales": [
+    "FACEBOOK",
+    "Otros 2"
+   ],
+   "caracteres": 45
+  },
+  {
+   "semana": 1,
+   "dia": "LUNES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "Instagram",
+    "Blog",
+    "Otros 2"
+   ],
+   "caracteres": 50
+  },
+  {
+   "semana": 1,
+   "dia": "LUNES",
+   "tipos": [
+    "video"
+   ],
+   "canales": [
+    "Blog",
+    "Snapchat",
+    "Tumblr"
+   ],
+   "caracteres": 45
+  },
+  {
+   "semana": 1,
+   "dia": "MARTES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "GORJEO",
+    "LinkedIn"
+   ],
+   "caracteres": 30
+  },
+  {
+   "semana": 1,
+   "dia": "MARTES",
+   "tipos": [
+    "video"
+   ],
+   "canales": [
+    "YOUTUBE",
+    "Otros 3"
+   ],
+   "caracteres": 25
+  },
+  {
+   "semana": 1,
+   "dia": "MARTES",
+   "tipos": [
+    "video"
+   ],
+   "canales": [
+    "Tiktok",
+    "Tumblr",
+    "Otros 2",
+    "Otros 3"
+   ],
+   "caracteres": 200
+  },
+  {
+   "semana": 1,
+   "dia": "MIÉRCOLES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "Tiktok",
+    "Otros 2"
+   ],
+   "caracteres": 5500
+  },
+  {
+   "semana": 1,
+   "dia": "MIÉRCOLES",
+   "tipos": [
+    "texto",
+    "video"
+   ],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": 350
+  },
+  {
+   "semana": 1,
+   "dia": "MIÉRCOLES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "Snapchat"
+   ],
+   "caracteres": 85
+  },
+  {
+   "semana": 1,
+   "dia": "JUEVES",
+   "tipos": [
+    "texto"
+   ],
+   "canales": [
+    "YOUTUBE",
+    "Otros 2"
+   ],
+   "caracteres": 67
+  },
+  {
+   "semana": 1,
+   "dia": "JUEVES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": 40
+  },
+  {
+   "semana": 1,
+   "dia": "VIERNES",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "Otros 2"
+   ],
+   "caracteres": 22
+  },
+  {
+   "semana": 1,
+   "dia": "VIERNES",
+   "tipos": [
+    "video"
+   ],
+   "canales": [
+    "Otros 1",
+    "Otros 2"
+   ],
+   "caracteres": 48
+  },
+  {
+   "semana": 1,
+   "dia": "VIERNES",
+   "tipos": [
+    "texto",
+    "imagen"
+   ],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": 600
+  },
+  {
+   "semana": 1,
+   "dia": "SÁBADO",
+   "tipos": [
+    "video"
+   ],
+   "canales": [
+    "Tumblr"
+   ],
+   "caracteres": 1200
+  },
+  {
+   "semana": 1,
+   "dia": "DOMINGO",
+   "tipos": [
+    "imagen"
+   ],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": 850
+  },
+  {
+   "semana": 2,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK",
+    "Instagram"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "GORJEO"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Blog"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Tiktok",
+    "Snapchat"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Snapchat",
+    "Pinterest"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Pinterest",
+    "Tumblr"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "JUEVES",
+   "tipos": [],
+   "canales": [
+    "Otros 1"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "JUEVES",
+   "tipos": [],
+   "canales": [
+    "Tumblr",
+    "Otros 1"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "VIERNES",
+   "tipos": [],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "VIERNES",
+   "tipos": [],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "VIERNES",
+   "tipos": [],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "SÁBADO",
+   "tipos": [],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "Snapchat"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Blog"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 2,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "GORJEO"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "Instagram"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK",
+    "GORJEO"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Instagram"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "GORJEO",
+    "Blog"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "Blog",
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "Tiktok",
+    "Snapchat"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "VIERNES",
+   "tipos": [],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Pinterest",
+    "Tumblr"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "YOUTUBE"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "Pinterest",
+    "YOUTUBE"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "SÁBADO",
+   "tipos": [],
+   "canales": [
+    "Snapchat"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "SÁBADO",
+   "tipos": [],
+   "canales": [
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "SÁBADO",
+   "tipos": [],
+   "canales": [
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 3,
+   "dia": "JUEVES",
+   "tipos": [],
+   "canales": [
+    "Blog"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Instagram",
+    "GORJEO"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "VIERNES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "JUEVES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "FACEBOOK"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Instagram",
+    "GORJEO"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "DOMINGO",
+   "tipos": [],
+   "canales": [
+    "GORJEO",
+    "Blog",
+    "Tiktok"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "LUNES",
+   "tipos": [],
+   "canales": [
+    "LinkedIn"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Snapchat"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "SÁBADO",
+   "tipos": [],
+   "canales": [
+    "Snapchat",
+    "Pinterest"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MARTES",
+   "tipos": [],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": null
+  },
+  {
+   "semana": 4,
+   "dia": "MIÉRCOLES",
+   "tipos": [],
+   "canales": [
+    "Pinterest"
+   ],
+   "caracteres": null
+  }
+ ]
+}
