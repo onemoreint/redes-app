@@ -38,6 +38,7 @@ Migraciones aplicadas, en orden:
 2. `0002_endurecer_funciones.sql`: funciones de permisos al esquema `privado`, índices.
 3. `0003_marcas_estrategia.sql`: marcas, estrategia (plantilla 1) y objetivos, con reglas de acceso por rol.
 4. `0004_publicaciones.sql`: publicaciones y sus redes (plantillas 3, 4, 5 y 6 fusionadas).
+5. `0005_revision.sql`: comentarios, historial y funciones `solicitar_revision` / `revisar_publicacion`.
 
 Pruebas: ejecutar cada archivo de `supabase/tests/` en el editor SQL. Siempre termina con un error
 "RESULTADO: N fallos" que deshace todo; N debe ser 0.

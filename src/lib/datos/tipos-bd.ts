@@ -475,6 +475,44 @@ export type Database = {
           },
         ]
       }
+      comentarios: {
+        Row: {
+          id: string
+          publicacion_id: string
+          espacio_id: string
+          autor_id: string | null
+          tipo: Database['public']['Enums']['tipo_comentario']
+          texto: string
+          creado_en: string
+        }
+        Insert: {
+          id?: string
+          publicacion_id: string
+          espacio_id: string
+          autor_id?: string | null
+          tipo?: Database['public']['Enums']['tipo_comentario']
+          texto?: string
+          creado_en?: string
+        }
+        Update: {
+          id?: string
+          publicacion_id?: string
+          espacio_id?: string
+          autor_id?: string | null
+          tipo?: Database['public']['Enums']['tipo_comentario']
+          texto?: string
+          creado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'comentarios_publicacion_id_fkey'
+            columns: ['publicacion_id']
+            isOneToOne: false
+            referencedRelation: 'publicaciones'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       miembros: {
         Row: {
           creado_en: string
@@ -532,6 +570,14 @@ export type Database = {
     Views: { [_ in never]: never }
     Functions: {
       aceptar_invitacion: { Args: { p_token: string }; Returns: string }
+      solicitar_revision: {
+        Args: { p_publicacion: string; p_mensaje?: string }
+        Returns: Database['public']['Enums']['estado_publicacion']
+      }
+      revisar_publicacion: {
+        Args: { p_publicacion: string; p_aprobar: boolean; p_mensaje?: string }
+        Returns: Database['public']['Enums']['estado_publicacion']
+      }
       crear_espacio: { Args: { p_nombre: string; p_zona_horaria?: string }; Returns: string }
       ver_invitacion: {
         Args: { p_token: string }
@@ -548,6 +594,7 @@ export type Database = {
       estado_objetivo: 'activo' | 'logrado' | 'revisado' | 'abandonado'
       estado_publicacion: 'idea' | 'borrador' | 'en_revision' | 'aprobado' | 'programado' | 'publicado' | 'en_pausa' | 'descartado'
       etapa_embudo: 'conciencia' | 'investigacion' | 'decision' | 'compra' | 'retencion'
+      tipo_comentario: 'comentario' | 'solicitud' | 'aprobacion' | 'devolucion'
     }
     CompositeTypes: { [_ in never]: never }
   }
@@ -564,3 +611,4 @@ export type Objetivo = Database['public']['Tables']['objetivos']['Row']
 export type EstadoObjetivo = Database['public']['Enums']['estado_objetivo']
 export type Publicacion = Database['public']['Tables']['publicaciones']['Row']
 export type PublicacionCanal = Database['public']['Tables']['publicacion_canales']['Row']
+export type Comentario = Database['public']['Tables']['comentarios']['Row']

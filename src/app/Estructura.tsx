@@ -6,10 +6,12 @@ import { usePerfil } from '../modules/cuenta/MiCuenta'
 import { NOMBRE_ROL } from '../lib/roles'
 import { Firma } from '../components/Firma'
 import { Selector } from '../components/ui'
+import { usePendientes } from '../modules/revision/datos'
 
-const ENLACES = [
+const ENLACES: { a: string; texto: string; fin?: boolean; contador?: boolean }[] = [
   { a: '/', texto: 'Inicio', fin: true },
   { a: '/calendario', texto: 'Calendario' },
+  { a: '/revision', texto: 'Revisión', contador: true },
   { a: '/marcas', texto: 'Marcas' },
   { a: '/miembros', texto: 'Miembros' },
   { a: '/ajustes', texto: 'Ajustes del espacio' },
@@ -20,6 +22,8 @@ function Navegacion({ alNavegar }: { alNavegar?: () => void }) {
   const { sesion } = useSesion()
   const perfil = usePerfil()
   const navegar = useNavigate()
+  const pendientes = usePendientes(actual?.id ?? '')
+  const nPendientes = actual ? (pendientes.data?.length ?? 0) : 0
 
   return (
     <div className="flex h-full flex-col gap-6 p-4">
@@ -68,7 +72,14 @@ function Navegacion({ alNavegar }: { alNavegar?: () => void }) {
                   (isActive ? 'bg-marca-50 text-marca-800' : 'text-stone-700 hover:bg-stone-100')
                 }
               >
-                {l.texto}
+                <span className="flex items-center justify-between">
+                  {l.texto}
+                  {l.contador && nPendientes > 0 && (
+                    <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800" aria-label={`${nPendientes} pendientes`}>
+                      {nPendientes}
+                    </span>
+                  )}
+                </span>
               </NavLink>
             </li>
           ))}

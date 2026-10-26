@@ -10,6 +10,7 @@ import Miembros from './modules/espacios/Miembros'
 import AjustesEspacio from './modules/espacios/AjustesEspacio'
 import AceptarInvitacion from './modules/espacios/AceptarInvitacion'
 import Marcas from './modules/marcas/Marcas'
+import Revision from './modules/revision/Revision'
 import Calendario from './modules/publicaciones/Calendario'
 import EditorPublicacion from './modules/publicaciones/Editor'
 import FichaMarca from './modules/marcas/FichaMarca'
@@ -103,6 +104,7 @@ export default function App() {
                       <Route path="calendario" element={<Calendario />} />
                       <Route path="publicaciones/nueva" element={<EditorPublicacion key="nueva" />} />
                       <Route path="publicaciones/:id" element={<EditorPublicacion />} />
+                      <Route path="revision" element={<Revision />} />
                       <Route path="marcas" element={<Marcas />} />
                       <Route path="marcas/:id" element={<FichaMarca />} />
                       <Route path="miembros" element={<Miembros />} />

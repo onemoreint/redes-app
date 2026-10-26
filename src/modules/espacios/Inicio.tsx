@@ -56,7 +56,7 @@ export default function Inicio() {
           <li className="text-stone-400 line-through">Cuentas, espacios de trabajo, miembros y roles</li>
           <li className="text-stone-400 line-through">Marcas y estrategia</li>
           <li className="text-stone-400 line-through">Publicaciones y calendario editorial</li>
-          <li>Revisión y aprobación</li>
+          <li className="text-stone-400 line-through">Revisión y aprobación</li>
           <li>Panel principal</li>
           <li>Métricas e informes</li>
           <li>Perfiles y auditoría</li>

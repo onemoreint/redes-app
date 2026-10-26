@@ -13,6 +13,7 @@ import { useEspacio } from '../../app/espacio'
 import { nombreDe, useMiembros } from '../../app/miembros'
 import { useMarcas } from '../marcas/datos'
 import { clavesPub, useCategoriasUsadas, usePublicacion } from './datos'
+import { AccionesRevision, HiloComentarios } from '../revision/componentes'
 import { AYUDA_ESTADO, CATEGORIAS_SUGERIDAS, NOMBRE_ESTADO, NOMBRE_ETAPA, TIPOS } from './catalogos'
 
 type CanalForm = { texto_adaptado: string; kpi_esperado: string; enlace_publicado: string; fecha_publicada: string; notas: string }
@@ -561,6 +562,9 @@ export default function Editor() {
           </div>
         </Tarjeta>
       </fieldset>
+
+      {!esNueva && <AccionesRevision publicacion={id!} estado={existente.data!.publicacion.estado} haySinGuardar={sucio} />}
+      {!esNueva && <HiloComentarios publicacion={id!} />}
 
       {editable && !esNueva && (
         <Tarjeta titulo="Borrar publicación" descripcion="Si solo no se va a publicar, cambia el estado a «Descartado» para conservar el historial.">

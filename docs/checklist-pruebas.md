@@ -63,3 +63,13 @@ Nota sobre pruebas con cuentas: Claude no crea cuentas ni escribe contraseñas e
 | 3.8 | Redes: marcar, adaptar texto, aviso de límite, enlace publicado | persona real | pendiente | |
 
 Límites de caracteres por red (solo avisos): referencia Buffer, consultada el 2026-10-25 — X 280 (cuentas gratuitas), Instagram 2.200, Facebook 5.000, LinkedIn 3.000, TikTok 2.200, Threads 500 (cuenta bytes), Pinterest 500, YouTube 5.000.
+
+## Entrega 4 — Revisión y aprobación
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 4.1 | 20 pruebas SQL: solo editores/administradores piden revisión y solo de ideas o borradores; administradores, editores y revisores aprueban o devuelven; devolver exige motivo; no se revisa lo que no está en revisión; el lector ve el historial pero no comenta ni aprueba; no se fabrican aprobaciones a mano; los comentarios no se editan, cada uno borra solo los suyos y el historial no se borra; comentarios vacíos rechazados; un ajeno no ve ni revisa ni comenta | `supabase/tests/0004_revision.sql` | aprobado | 2026-10-25 |
+| 4.2 | Avisos de seguridad: solo las 5 funciones públicas previstas; protección de contraseñas filtradas desactivada (ajuste del panel de Supabase) | Supabase advisors | aprobado (con nota) | 2026-10-25 |
+| 4.3 | Pedir revisión desde el editor; la bandeja muestra la pendiente y el contador del menú | dos cuentas reales | pendiente | |
+| 4.4 | Revisor aprueba y devuelve con motivo; el editor la ve en "Devueltas" | dos cuentas reales | pendiente | |
+| 4.5 | Comentar, borrar mi comentario, historial con autor y hora | persona real | pendiente | |

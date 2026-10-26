@@ -26,6 +26,10 @@ const POR_PISTA_BD: Record<string, string> = {
   vencida: 'La invitación venció. Pide a quien te invitó que te envíe una nueva.',
   otro_correo: 'Esta invitación es para otro correo. Entra con la cuenta del correo invitado.',
   responsable_no_miembro: 'La persona responsable debe ser miembro de este espacio.',
+  publicacion_no_existe: 'La publicación no existe o ya no tienes acceso.',
+  estado_no_permite_revision: 'Solo se puede pedir revisión de ideas o borradores.',
+  no_en_revision: 'Esta publicación ya no está en revisión: alguien la revisó antes. Recarga para ver su estado.',
+  devolucion_sin_motivo: 'Para devolverla, explica qué hay que cambiar.',
 }
 
 type ErrorConocido = { code?: string; message?: string; hint?: string; status?: number; name?: string }
