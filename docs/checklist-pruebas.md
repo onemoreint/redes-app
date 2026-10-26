@@ -138,3 +138,33 @@ Reglas de importación:
 - Una fila sin título, fecha, texto, hashtags, CTA, notas ni redes marcadas se ignora.
 - Sin título pero con texto: el título es el comienzo del texto, con aviso.
 - La plantilla de informe (IC 8857) y la de plan estratégico son resúmenes: sus datos se registran en Informes / Marcas → Estrategia, no se importan.
+
+## Entrega 10 — Bienvenida, ayuda y cierre
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 10.1 | 12 pruebas SQL de las operaciones del asistente y de la marca de ejemplo con permisos reales: la editora importa en cualquier estado con redes; «programado» sin fecha se rechaza; un registro de auditoría repetido no sobrescribe; el historial guarda quién importó; la editora no crea marcas; la lectora ve (puede exportar) pero no importa ni escribe historial; la administradora crea la marca de ejemplo; la copia lee todas las tablas del espacio; borrar la marca de ejemplo borra lo suyo | `supabase/tests/0007_importar_ejemplo.sql` | aprobado | 2026-10-26 |
+| 10.2 | Las páginas se cargan por ruta: carga inicial ≈ 550 kB (antes 747 kB en un solo bloque); ExcelJS aparte | `npm run build` | aprobado | 2026-10-26 |
+| 10.3 | Los textos de Ayuda (estados, roles, límites de caracteres) salen de las mismas constantes que usa la app; las fórmulas descritas coinciden con `src/lib/calculos/` | revisión del código | aprobado | 2026-10-26 |
+| 10.4 | Primeros pasos en Inicio: se marcan solos con los datos reales, se ocultan con «Ocultar» (recordado en el navegador) y desaparecen al completarse | persona real | pendiente | |
+| 10.5 | Crear la marca de ejemplo, verla en calendario y revisión, borrarla desde Marcas | persona real | pendiente | |
+| 10.6 | Copia semanal: configurar los dos secretos y ejecutar el flujo una vez | persona real (opcional) | pendiente | |
+
+## Estado al cierre (2026-10-26)
+
+- **Automático, aprobado:**
+  - 94 pruebas de cálculos, importación y Excel.
+  - 7 archivos de pruebas SQL de permisos, todos con 0 fallos.
+  - Tipos, lint y compilación en cada publicación.
+- **Pendiente, con persona real:** todo lo que requiere iniciar sesión en la app publicada (filas "persona real"). Para probarlo hace falta una cuenta propia; el asistente no crea cuentas ni escribe contraseñas.
+- **Orden sugerido para probar:**
+  1. Crear cuenta.
+  2. Crear espacio.
+  3. Crear la marca de ejemplo.
+  4. Calendario.
+  5. Revisión.
+  6. Importar una plantilla propia.
+  7. Resultados e informes.
+  8. Auditoría.
+  9. Invitar a una segunda cuenta como revisor.
+  10. Copia de seguridad.

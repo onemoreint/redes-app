@@ -12,7 +12,7 @@ Si el flujo falla en el paso de pruebas, no se publica nada: la versión anterio
 
 - Proyecto: `redes-app` (id `ybatnimglmstcsaotntn`), región `sa-east-1`, plan gratuito.
 - El plan gratuito **pausa el proyecto tras 1 semana sin actividad**. Se reactiva desde el panel de Supabase.
-- El plan gratuito **no hace copias de seguridad automáticas**. La copia propia se configura en la entrega 10 (ver `docs/mantenimiento.md`).
+- El plan gratuito **no hace copias de seguridad automáticas**. Ver copias de seguridad en `docs/mantenimiento.md`.
 - La estructura de la base de datos vive en `supabase/migrations/`, en orden. Nunca se modifica una migración ya aplicada: se añade una nueva.
 
 ## Autenticación (Supabase > Authentication > URL Configuration)
@@ -43,6 +43,10 @@ Migraciones aplicadas, en orden:
 7. `0007_auditoria.sql`: perfiles por marca y red, registros históricos de auditoría (plantilla 2).
 8. `0008_campanas.sql`: campañas y su relación con publicaciones (plantilla 5).
 9. `0009_importaciones.sql`: registro de importaciones desde Excel/CSV.
+
+Flujos de GitHub Actions:
+- `desplegar.yml`: tipos, pruebas, compilación y publicación en cada `push` a `main`.
+- `copia-seguridad.yml`: copia semanal cifrada, opcional (necesita dos secretos; ver `docs/mantenimiento.md`).
 
 Pruebas: ejecutar cada archivo de `supabase/tests/` en el editor SQL. Siempre termina con un error
 "RESULTADO: N fallos" que deshace todo; N debe ser 0.

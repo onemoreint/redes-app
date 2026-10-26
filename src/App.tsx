@@ -1,3 +1,4 @@
+import { lazy } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Link, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { ProveedorSesion, useSesion } from './app/sesion'
@@ -6,22 +7,26 @@ import Estructura from './app/Estructura'
 import { Entrar, PantallaAcceso, Recuperar, Registro, Restablecer } from './modules/cuenta/acceso'
 import MiCuenta from './modules/cuenta/MiCuenta'
 import Inicio from './modules/espacios/Inicio'
-import Miembros from './modules/espacios/Miembros'
-import AjustesEspacio from './modules/espacios/AjustesEspacio'
 import AceptarInvitacion from './modules/espacios/AceptarInvitacion'
-import Marcas from './modules/marcas/Marcas'
-import Campanas, { FichaCampana } from './modules/campanas/Campanas'
-import Perfiles from './modules/auditoria/Perfiles'
-import Informes from './modules/metricas/Informes'
-import Revision from './modules/revision/Revision'
-import Importar from './modules/importar/Importar'
-import Calendario from './modules/publicaciones/Calendario'
-import EditorPublicacion from './modules/publicaciones/Editor'
-import FichaMarca from './modules/marcas/FichaMarca'
 import { FormularioCrearEspacio } from './modules/espacios/CrearEspacio'
 import { Aviso, Cargando, Encabezado, ProveedorNotas, Tarjeta } from './components/ui'
 import { mensajeError } from './lib/datos/errores'
 import { supabase } from './lib/datos/supabase'
+
+// Cada página se descarga al visitarla por primera vez (carga inicial más ligera).
+const Miembros = lazy(() => import('./modules/espacios/Miembros'))
+const AjustesEspacio = lazy(() => import('./modules/espacios/AjustesEspacio'))
+const Marcas = lazy(() => import('./modules/marcas/Marcas'))
+const Campanas = lazy(() => import('./modules/campanas/Campanas'))
+const FichaCampana = lazy(() => import('./modules/campanas/Campanas').then((m) => ({ default: m.FichaCampana })))
+const Perfiles = lazy(() => import('./modules/auditoria/Perfiles'))
+const Informes = lazy(() => import('./modules/metricas/Informes'))
+const Revision = lazy(() => import('./modules/revision/Revision'))
+const Importar = lazy(() => import('./modules/importar/Importar'))
+const Ayuda = lazy(() => import('./modules/ayuda/Ayuda'))
+const Calendario = lazy(() => import('./modules/publicaciones/Calendario'))
+const EditorPublicacion = lazy(() => import('./modules/publicaciones/Editor'))
+const FichaMarca = lazy(() => import('./modules/marcas/FichaMarca'))
 
 const clienteConsultas = new QueryClient({
   defaultOptions: { queries: { retry: 1, refetchOnWindowFocus: true, staleTime: 30_000 } },
@@ -111,6 +116,7 @@ export default function App() {
                       <Route path="revision" element={<Revision />} />
                       <Route path="informes" element={<Informes />} />
                       <Route path="importar" element={<Importar />} />
+                      <Route path="ayuda" element={<Ayuda />} />
                       <Route path="campanas" element={<Campanas />} />
                       <Route path="campanas/:id" element={<FichaCampana />} />
                       <Route path="perfiles" element={<Perfiles />} />

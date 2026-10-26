@@ -1,0 +1,67 @@
+# Copia de seguridad semanal de la base de datos (opcional).
+# Solo funciona si configuras dos secretos en Settings → Secrets and variables → Actions:
+#   SUPABASE_DB_URL     cadena de conexión "Session pooler" de Supabase (con la contraseña de la base de datos)
+#   BACKUP_PASSPHRASE   frase larga para cifrar la copia
+# El repositorio es público: la copia SIEMPRE se cifra antes de subirla como artefacto.
+# Ver docs/mantenimiento.md.
+name: Copia de seguridad
+
+on:
+  schedule:
+    - cron: '17 7 * * 1' # lunes 07:17 UTC (03:17 en Colombia)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  copia:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar secretos
+        id: secretos
+        env:
+          DB: ${{ secrets.SUPABASE_DB_URL }}
+          FRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          if [ -z "$DB" ] || [ -z "$FRASE" ]; then
+            echo "::notice::Copia omitida: faltan los secretos SUPABASE_DB_URL y/o BACKUP_PASSPHRASE (ver docs/mantenimiento.md)."
+            echo "listo=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "listo=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Instalar pg_dump 17
+        if: steps.secretos.outputs.listo == 'si'
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -yq postgresql-common gnupg
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -yq postgresql-client-17
+
+      - name: Volcar y cifrar
+        if: steps.secretos.outputs.listo == 'si'
+        env:
+          DB: ${{ secrets.SUPABASE_DB_URL }}
+          FRASE: ${{ secrets.BACKUP_PASSPHRASE }}
+        run: |
+          set -euo pipefail
+          fecha=$(date -u +%Y-%m-%d)
+          mkdir copia
+          # Estructura y datos de la app
+          /usr/lib/postgresql/17/bin/pg_dump "$DB" --no-owner --no-privileges --schema=public --schema=privado -Fc -f "copia/app-$fecha.dump"
+          # Cuentas de usuario (necesarias para restaurar perfiles y miembros)
+          /usr/lib/postgresql/17/bin/pg_dump "$DB" --data-only --table=auth.users --table=auth.identities -Fc -f "copia/usuarios-$fecha.dump"
+          tar -czf "copia-$fecha.tar.gz" copia
+          gpg --batch --yes --pinentry-mode loopback --passphrase "$FRASE" --symmetric --cipher-algo AES256 -o "copia-$fecha.tar.gz.gpg" "copia-$fecha.tar.gz"
+          rm -rf copia "copia-$fecha.tar.gz"
+          ls -la
+
+      - name: Guardar (90 días)
+        if: steps.secretos.outputs.listo == 'si'
+        uses: actions/upload-artifact@v4
+        with:
+          name: copia-cifrada
+          path: copia-*.tar.gz.gpg
+          retention-days: 90
+          if-no-files-found: error

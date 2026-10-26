@@ -16,6 +16,7 @@ import { hoyEn, useMarcas } from '../marcas/datos'
 import { usePublicacionesRango, type PublicacionConCanales } from '../publicaciones/datos'
 import { COLOR_ESTADO, NOMBRE_ESTADO, TIPOS } from '../publicaciones/catalogos'
 import { usePendientes } from '../revision/datos'
+import { PrimerosPasos } from './PrimerosPasos'
 
 const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 const DIAS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
@@ -128,20 +129,7 @@ export default function Inicio() {
         </div>
       </div>
 
-      {marcas.data && marcas.data.length === 0 && (
-        <Tarjeta titulo="Primer paso: crea una marca">
-          <p className="text-sm text-stone-600">
-            Todo se organiza por marca: estrategia, publicaciones y métricas.{' '}
-            {puede.administrarEspacio(actual?.rol) ? (
-              <Link className="font-medium text-marca-700 hover:underline" to="/marcas">
-                Crear la primera marca
-              </Link>
-            ) : (
-              'Pide a un administrador que cree la primera.'
-            )}
-          </p>
-        </Tarjeta>
-      )}
+      <PrimerosPasos espacio={actual!} />
 
       {/* Indicadores */}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">

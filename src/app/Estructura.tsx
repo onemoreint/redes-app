@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useEspacio } from './espacio'
 import { useSesion } from './sesion'
 import { usePerfil } from '../modules/cuenta/MiCuenta'
 import { NOMBRE_ROL } from '../lib/roles'
 import { Firma } from '../components/Firma'
-import { Selector } from '../components/ui'
+import { Cargando, Selector } from '../components/ui'
 import { usePendientes } from '../modules/revision/datos'
 
 const ENLACES: { a: string; texto: string; fin?: boolean; contador?: boolean }[] = [
@@ -19,6 +19,7 @@ const ENLACES: { a: string; texto: string; fin?: boolean; contador?: boolean }[]
   { a: '/marcas', texto: 'Marcas' },
   { a: '/miembros', texto: 'Miembros' },
   { a: '/ajustes', texto: 'Ajustes del espacio' },
+  { a: '/ayuda', texto: 'Ayuda' },
 ]
 
 function Navegacion({ alNavegar }: { alNavegar?: () => void }) {
@@ -157,7 +158,9 @@ export default function Estructura() {
       )}
 
       <main id="contenido" className="mx-auto w-full max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
-        <Outlet />
+        <Suspense fallback={<Cargando />}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   )
