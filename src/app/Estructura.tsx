@@ -12,6 +12,7 @@ const ENLACES: { a: string; texto: string; fin?: boolean; contador?: boolean }[]
   { a: '/', texto: 'Inicio', fin: true },
   { a: '/calendario', texto: 'Calendario' },
   { a: '/revision', texto: 'Revisión', contador: true },
+  { a: '/informes', texto: 'Informes' },
   { a: '/marcas', texto: 'Marcas' },
   { a: '/miembros', texto: 'Miembros' },
   { a: '/ajustes', texto: 'Ajustes del espacio' },

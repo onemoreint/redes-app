@@ -14,6 +14,7 @@ import { nombreDe, useMiembros } from '../../app/miembros'
 import { useMarcas } from '../marcas/datos'
 import { clavesPub, useCategoriasUsadas, usePublicacion } from './datos'
 import { AccionesRevision, HiloComentarios } from '../revision/componentes'
+import Resultados from '../metricas/Resultados'
 import { AYUDA_ESTADO, CATEGORIAS_SUGERIDAS, NOMBRE_ESTADO, NOMBRE_ETAPA, TIPOS } from './catalogos'
 
 type CanalForm = { texto_adaptado: string; kpi_esperado: string; enlace_publicado: string; fecha_publicada: string; notas: string }
@@ -252,6 +253,8 @@ export default function Editor() {
     setF({ ...f, canales: { ...f.canales, [canal]: { ...f.canales[canal], [k]: v } } })
   const alternarCanal = (canal: string) => {
     const nuevos = { ...f.canales }
+    const guardado = existente.data?.canales.some((c) => c.canal === canal)
+    if (nuevos[canal] && guardado && !window.confirm(`Si quitas ${canal} y guardas, se borrarán sus datos y resultados registrados. ¿Quitarla?`)) return
     if (nuevos[canal]) delete nuevos[canal]
     else nuevos[canal] = { ...canalVacio }
     setF({ ...f, canales: nuevos })
@@ -564,6 +567,9 @@ export default function Editor() {
       </fieldset>
 
       {!esNueva && <AccionesRevision publicacion={id!} estado={existente.data!.publicacion.estado} haySinGuardar={sucio} />}
+      {!esNueva && (
+        <Resultados publicacion={id!} canales={existente.data!.canales} editable={editable} />
+      )}
       {!esNueva && <HiloComentarios publicacion={id!} />}
 
       {editable && !esNueva && (

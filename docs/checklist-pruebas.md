@@ -83,3 +83,16 @@ Límites de caracteres por red (solo avisos): referencia Buffer, consultada el 2
 | 5.3 | Panel con datos reales: próximas, atrasadas, pendientes, en proceso, tablero por mes y marca | persona real | pendiente | |
 
 Definición de "cumplimiento": de las publicaciones cuya fecha prevista ya pasó (sin contar descartadas), qué porcentaje está en estado Publicado. Es un indicador nuevo; las plantillas no lo calculaban.
+
+## Entrega 6 — Métricas e informes
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 6.1 | 11 pruebas SQL: la métrica hereda espacio y publicación de su red; origen siempre "manual"; una medición por red y día (se puede volver a medir otro día); sin negativos ni mediciones vacías; no se registra en redes de otro espacio; la revisora ve pero no cambia; un ajeno no ve; quitar la red borra sus métricas | `supabase/tests/0005_metricas.sql` | aprobado | 2026-10-25 |
+| 6.2 | Informe con los datos de la plantilla IC 8857 y fórmulas corregidas: alcance total 10.000, compromiso 6.258, promedio 625,8, tasa 62,58 %, totales por métrica, comparación con la semana anterior, semana típica (30 días ÷ 30 × 7), top 5 y resumen por red | `npm test` (informe.test.ts) | aprobado | 2026-10-25 |
+| 6.3 | Casos límite: periodo sin datos, variación sin base, última medición | `npm test` | aprobado | 2026-10-25 |
+| 6.4 | CSV para Excel en español: coma decimal, comillas, saltos de línea, BOM y neutralización de fórmulas | `npm test` (csv.test.ts) | aprobado | 2026-10-25 |
+| 6.5 | Registrar, editar y eliminar resultados en una publicación | persona real | pendiente | |
+| 6.6 | Informe por periodo, marca y red; descarga CSV y abrirla en Excel | persona real | pendiente | |
+
+Reglas del informe: cuenta cada publicación en cada red; la fecha es la de publicación real en esa red (si no se anotó, la prevista); la cifra es la medición más reciente.

@@ -513,6 +513,80 @@ export type Database = {
           },
         ]
       }
+      metricas: {
+        Row: {
+          id: string
+          publicacion_canal_id: string
+          publicacion_id: string
+          espacio_id: string
+          medido_el: string
+          alcance: number | null
+          impresiones: number | null
+          me_gusta: number | null
+          comentarios: number | null
+          compartidos: number | null
+          guardados: number | null
+          clics: number | null
+          menciones: number | null
+          origen: Database['public']['Enums']['origen_dato']
+          notas: string
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          publicacion_canal_id: string
+          publicacion_id: string
+          espacio_id: string
+          medido_el: string
+          alcance?: number | null
+          impresiones?: number | null
+          me_gusta?: number | null
+          comentarios?: number | null
+          compartidos?: number | null
+          guardados?: number | null
+          clics?: number | null
+          menciones?: number | null
+          origen?: Database['public']['Enums']['origen_dato']
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          publicacion_canal_id?: string
+          publicacion_id?: string
+          espacio_id?: string
+          medido_el?: string
+          alcance?: number | null
+          impresiones?: number | null
+          me_gusta?: number | null
+          comentarios?: number | null
+          compartidos?: number | null
+          guardados?: number | null
+          clics?: number | null
+          menciones?: number | null
+          origen?: Database['public']['Enums']['origen_dato']
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'metricas_publicacion_canal_id_fkey'
+            columns: ['publicacion_canal_id']
+            isOneToOne: false
+            referencedRelation: 'publicacion_canales'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       miembros: {
         Row: {
           creado_en: string
@@ -595,6 +669,7 @@ export type Database = {
       estado_publicacion: 'idea' | 'borrador' | 'en_revision' | 'aprobado' | 'programado' | 'publicado' | 'en_pausa' | 'descartado'
       etapa_embudo: 'conciencia' | 'investigacion' | 'decision' | 'compra' | 'retencion'
       tipo_comentario: 'comentario' | 'solicitud' | 'aprobacion' | 'devolucion'
+      origen_dato: 'manual'
     }
     CompositeTypes: { [_ in never]: never }
   }
@@ -612,3 +687,4 @@ export type EstadoObjetivo = Database['public']['Enums']['estado_objetivo']
 export type Publicacion = Database['public']['Tables']['publicaciones']['Row']
 export type PublicacionCanal = Database['public']['Tables']['publicacion_canales']['Row']
 export type Comentario = Database['public']['Tables']['comentarios']['Row']
+export type MetricaFila = Database['public']['Tables']['metricas']['Row']
