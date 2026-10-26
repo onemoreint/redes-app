@@ -9,6 +9,8 @@ import Inicio from './modules/espacios/Inicio'
 import Miembros from './modules/espacios/Miembros'
 import AjustesEspacio from './modules/espacios/AjustesEspacio'
 import AceptarInvitacion from './modules/espacios/AceptarInvitacion'
+import Marcas from './modules/marcas/Marcas'
+import FichaMarca from './modules/marcas/FichaMarca'
 import { FormularioCrearEspacio } from './modules/espacios/CrearEspacio'
 import { Aviso, Cargando, Encabezado, ProveedorNotas, Tarjeta } from './components/ui'
 import { mensajeError } from './lib/datos/errores'
@@ -96,6 +98,8 @@ export default function App() {
                   <Route element={<ConEspacio />}>
                     <Route element={<Estructura />}>
                       <Route index element={<Inicio />} />
+                      <Route path="marcas" element={<Marcas />} />
+                      <Route path="marcas/:id" element={<FichaMarca />} />
                       <Route path="miembros" element={<Miembros />} />
                       <Route path="ajustes" element={<AjustesEspacio />} />
                       <Route path="cuenta" element={<MiCuenta />} />

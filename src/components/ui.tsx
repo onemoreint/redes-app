@@ -10,6 +10,7 @@ import {
   type InputHTMLAttributes,
   type ReactNode,
   type SelectHTMLAttributes,
+  type TextareaHTMLAttributes,
 } from 'react'
 
 const cx = (...c: (string | false | null | undefined)[]) => c.filter(Boolean).join(' ')
@@ -83,6 +84,57 @@ export function Campo({
           {error || ayuda}
         </p>
       )}
+    </div>
+  )
+}
+
+export function Areatexto({
+  etiqueta,
+  ayuda,
+  error,
+  className,
+  ...props
+}: TextareaHTMLAttributes<HTMLTextAreaElement> & { etiqueta: string; ayuda?: ReactNode; error?: string | null }) {
+  const id = useId()
+  return (
+    <div className={className}>
+      <label htmlFor={id} className="mb-1 block text-sm font-medium text-stone-800">
+        {etiqueta}
+      </label>
+      <textarea
+        id={id}
+        rows={3}
+        {...props}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error || ayuda ? `${id}-desc` : undefined}
+        className={cx(ESTILO_CONTROL, 'resize-y', error ? 'border-red-400' : 'border-stone-300')}
+      />
+      {(error || ayuda) && (
+        <p id={`${id}-desc`} className={cx('mt-1 text-xs', error ? 'text-red-700' : 'text-stone-500')}>
+          {error || ayuda}
+        </p>
+      )}
+    </div>
+  )
+}
+
+export function BarraProgreso({ porcentaje, etiqueta }: { porcentaje: number; etiqueta: string }) {
+  return (
+    <div>
+      <div className="mb-1 flex justify-between text-xs text-stone-600">
+        <span>{etiqueta}</span>
+        <span className="font-medium">{porcentaje} %</span>
+      </div>
+      <div
+        role="progressbar"
+        aria-label={etiqueta}
+        aria-valuenow={porcentaje}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        className="h-2 overflow-hidden rounded-full bg-stone-100"
+      >
+        <div className="h-full rounded-full bg-marca-600 transition-all" style={{ width: `${porcentaje}%` }} />
+      </div>
     </div>
   )
 }

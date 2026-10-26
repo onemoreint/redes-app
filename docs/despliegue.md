@@ -36,6 +36,7 @@ durante 7 días (lo comprueba `public.aceptar_invitacion` en la base de datos).
 Migraciones aplicadas, en orden:
 1. `0001_espacios_miembros.sql`: perfiles, espacios, miembros, invitaciones, reglas de acceso.
 2. `0002_endurecer_funciones.sql`: funciones de permisos al esquema `privado`, índices.
+3. `0003_marcas_estrategia.sql`: marcas, estrategia (plantilla 1) y objetivos, con reglas de acceso por rol.
 
-Pruebas: ejecutar `supabase/tests/0001_acceso.sql` en el editor SQL. Siempre termina con un error
+Pruebas: ejecutar cada archivo de `supabase/tests/` en el editor SQL. Siempre termina con un error
 "RESULTADO: N fallos" que deshace todo; N debe ser 0.

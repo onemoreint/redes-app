@@ -35,3 +35,16 @@ Nota 0.6: la consola muestra un 404 de `/favicon.ico` en la raíz del dominio (p
 Nota: las direcciones internas (`/miembros`, `/invitacion/...`) se sirven desde `404.html`, que contiene la app (técnica estándar para apps de una página en GitHub Pages). El navegador registra un 404 en la consola, pero la página funciona.
 
 Nota sobre pruebas con cuentas: Claude no crea cuentas ni escribe contraseñas en la app publicada; las pruebas 1.7 a 1.11 las hace una persona.
+
+## Entrega 2 — Marcas y estrategia
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 2.1 | 18 pruebas SQL: la estrategia nace con la marca; autoría automática; nombre de marca único por espacio; solo administradores crean y borran marcas; editores editan estrategia y objetivos; revisores solo leen; un ajeno no ve nada ni puede colgar objetivos en marcas ajenas; una marca no cambia de espacio; metas negativas rechazadas; borrar la marca borra su estrategia y objetivos | `supabase/tests/0002_marcas.sql` | aprobado | 2026-10-25 |
+| 2.2 | La plantilla 1 conserva todas sus preguntas (7 + 6 + 6 casillas + 5) y el avance se calcula bien | `npm test` (estrategia.test.ts) | aprobado | 2026-10-25 |
+| 2.3 | Objetivos: vencido solo si está activo y pasó la fecha; cambio pedido en número y % | `npm test` | aprobado | 2026-10-25 |
+| 2.4 | Números escritos a mano: "1.500", "1500,5", "1.500,25"; texto inválido da error | `npm test` (numeros.test.ts) | aprobado | 2026-10-25 |
+| 2.5 | Avisos de seguridad de Supabase sin hallazgos nuevos | Supabase advisors | aprobado | 2026-10-25 |
+| 2.6 | Crear marca, completar estrategia (se guarda sola), recargar y ver los datos | persona real | pendiente | |
+| 2.7 | Crear, editar y eliminar objetivos; archivar, restaurar y borrar marca | persona real | pendiente | |
+| 2.8 | Con rol Revisor: todo en solo lectura | persona real | pendiente | |
