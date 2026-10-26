@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import type { Database } from './tipos-bd'
 
 const url = import.meta.env.VITE_SUPABASE_URL as string | undefined
 const clave = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefined
@@ -6,9 +7,15 @@ const clave = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string | undefine
 export const configuracionCompleta = Boolean(url && clave)
 
 /** Cliente único de Supabase. Solo usa la clave publicable; nunca la de servicio. */
-export const supabase = configuracionCompleta
-  ? createClient(url!, clave!, { auth: { persistSession: true, autoRefreshToken: true } })
-  : null
+export const supabase = createClient<Database>(url ?? 'https://configuracion-faltante.invalid', clave ?? 'falta', {
+  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce' },
+})
+
+/** Dirección pública de la app (respeta el subdirectorio de GitHub Pages). */
+export function urlApp(ruta = ''): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+  return `${window.location.origin}${base}/${ruta.replace(/^\//, '')}`
+}
 
 export type EstadoConexion = { ok: true } | { ok: false; motivo: string }
 
