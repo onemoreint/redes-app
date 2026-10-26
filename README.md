@@ -66,6 +66,7 @@ docs/               instalación, despliegue, mantenimiento y checklist de prueb
 
 ## Documentación
 
+- **`docs/Manual-de-uso-redes-app.pdf`: manual de uso paso a paso para quien usa la app (42 páginas, con capturas).**
 - `docs/instalacion.md`: levantar otra copia desde cero.
 - `docs/despliegue.md`: GitHub Pages, Supabase, autenticación, migraciones.
 - `docs/mantenimiento.md`: copias de seguridad, restaurar, pausa del plan gratuito, actualizaciones.
