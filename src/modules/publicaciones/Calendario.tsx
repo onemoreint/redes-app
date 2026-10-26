@@ -25,6 +25,7 @@ import { nombreDe, useMiembros } from '../../app/miembros'
 import { hoyEn, useMarcas } from '../marcas/datos'
 import { clavesPub, usePublicacionesRango, usePublicacionesSinFecha, type PublicacionConCanales } from './datos'
 import { COLOR_ESTADO, NOMBRE_ESTADO } from './catalogos'
+import { useCampanas } from '../campanas/Campanas'
 
 type Vista = 'mes' | 'semana' | 'lista'
 const DIAS_CORTOS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
@@ -51,6 +52,7 @@ export default function Calendario() {
 
   const marcas = useMarcas(espacio)
   const miembros = useMiembros(espacio)
+  const campanas = useCampanas(espacio)
   const [anio, mes] = fecha.split('-').map(Number)
 
   // Rango visible
@@ -270,6 +272,21 @@ export default function Calendario() {
             </option>
           ))}
         </Selector>
+        {(campanas.data?.length ?? 0) > 0 && (
+          <Selector
+            etiqueta="Campaña"
+            value={filtros.campana ?? ''}
+            onChange={(e) => setFiltros({ ...filtros, campana: e.target.value || undefined })}
+          >
+            <option value="">Todas</option>
+            <option value="sin">Sin campaña</option>
+            {campanas.data!.map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.nombre}
+              </option>
+            ))}
+          </Selector>
+        )}
         <Campo
           etiqueta="Buscar"
           type="search"

@@ -30,6 +30,7 @@ const POR_PISTA_BD: Record<string, string> = {
   estado_no_permite_revision: 'Solo se puede pedir revisión de ideas o borradores.',
   no_en_revision: 'Esta publicación ya no está en revisión: alguien la revisó antes. Recarga para ver su estado.',
   devolucion_sin_motivo: 'Para devolverla, explica qué hay que cambiar.',
+  campana_otra_marca: 'La campaña elegida es de otra marca. Elige una campaña de la misma marca o ninguna.',
 }
 
 type ErrorConocido = { code?: string; message?: string; hint?: string; status?: number; name?: string }

@@ -73,7 +73,7 @@ type FilaConsulta = MetricaFila & {
   } | null
 }
 
-function useResultados(espacio: string) {
+export function useResultados(espacio: string) {
   return useQuery({
     queryKey: ['metricas', 'espacio', espacio],
     queryFn: async (): Promise<ResultadoRed[]> => {

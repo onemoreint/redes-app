@@ -74,6 +74,7 @@ export interface PublicacionCalendario {
   categoria: string
   texto: string
   canales: string[]
+  campana_id?: string | null
 }
 
 /** Agrupa por día local y ordena por hora. Las que no tienen fecha no aparecen. */
@@ -96,6 +97,7 @@ export interface Filtros {
   estado?: Estado | 'atrasadas' | 'activas'
   responsable?: string // id o 'sin'
   categoria?: string
+  campana?: string // id o 'sin'
   texto?: string
 }
 
@@ -112,6 +114,8 @@ export function filtrar<T extends PublicacionCalendario>(lista: T[], f: Filtros,
     if (f.responsable === 'sin' && p.responsable_id) return false
     if (f.responsable && f.responsable !== 'sin' && p.responsable_id !== f.responsable) return false
     if (f.categoria && p.categoria !== f.categoria) return false
+    if (f.campana === 'sin' && p.campana_id) return false
+    if (f.campana && f.campana !== 'sin' && p.campana_id !== f.campana) return false
     if (q && !p.titulo.toLowerCase().includes(q) && !p.texto.toLowerCase().includes(q)) return false
     return true
   })

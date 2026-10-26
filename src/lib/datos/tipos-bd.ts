@@ -344,6 +344,7 @@ export type Database = {
           estado: Database['public']['Enums']['estado_publicacion']
           estado_anterior: Database['public']['Enums']['estado_publicacion'] | null
           notas: string
+          campana_id: string | null
           creado_por: string | null
           creado_en: string
           actualizado_por: string | null
@@ -367,6 +368,7 @@ export type Database = {
           estado?: Database['public']['Enums']['estado_publicacion']
           estado_anterior?: Database['public']['Enums']['estado_publicacion'] | null
           notas?: string
+          campana_id?: string | null
           creado_por?: string | null
           creado_en?: string
           actualizado_por?: string | null
@@ -390,6 +392,7 @@ export type Database = {
           estado?: Database['public']['Enums']['estado_publicacion']
           estado_anterior?: Database['public']['Enums']['estado_publicacion'] | null
           notas?: string
+          campana_id?: string | null
           creado_por?: string | null
           creado_en?: string
           actualizado_por?: string | null
@@ -587,6 +590,248 @@ export type Database = {
           },
         ]
       }
+      cuentas_red: {
+        Row: {
+          id: string
+          espacio_id: string
+          marca_id: string
+          canal: string
+          nombre_perfil: string
+          enlace: string
+          frecuencia_objetivo: string
+          activa: boolean
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          espacio_id: string
+          marca_id: string
+          canal: string
+          nombre_perfil?: string
+          enlace?: string
+          frecuencia_objetivo?: string
+          activa?: boolean
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          espacio_id?: string
+          marca_id?: string
+          canal?: string
+          nombre_perfil?: string
+          enlace?: string
+          frecuencia_objetivo?: string
+          activa?: boolean
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'cuentas_red_marca_id_fkey'
+            columns: ['marca_id']
+            isOneToOne: false
+            referencedRelation: 'marcas'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'cuentas_red_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      registros_auditoria: {
+        Row: {
+          id: string
+          cuenta_id: string
+          espacio_id: string
+          fecha: string
+          seguidores: number | null
+          ultima_actividad: string | null
+          frecuencia: string
+          trafico_referencia: number | null
+          clics_por_publicacion: number | null
+          alcance: number | null
+          notas: string
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          cuenta_id: string
+          espacio_id: string
+          fecha: string
+          seguidores?: number | null
+          ultima_actividad?: string | null
+          frecuencia?: string
+          trafico_referencia?: number | null
+          clics_por_publicacion?: number | null
+          alcance?: number | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          cuenta_id?: string
+          espacio_id?: string
+          fecha?: string
+          seguidores?: number | null
+          ultima_actividad?: string | null
+          frecuencia?: string
+          trafico_referencia?: number | null
+          clics_por_publicacion?: number | null
+          alcance?: number | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'registros_auditoria_cuenta_id_fkey'
+            columns: ['cuenta_id']
+            isOneToOne: false
+            referencedRelation: 'cuentas_red'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'registros_auditoria_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      campanas: {
+        Row: {
+          id: string
+          espacio_id: string
+          marca_id: string
+          nombre: string
+          tema: string
+          objetivo: string
+          etapa: Database['public']['Enums']['etapa_embudo'] | null
+          inicio: string | null
+          fin: string | null
+          notas: string
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          espacio_id: string
+          marca_id: string
+          nombre: string
+          tema?: string
+          objetivo?: string
+          etapa?: Database['public']['Enums']['etapa_embudo'] | null
+          inicio?: string | null
+          fin?: string | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          espacio_id?: string
+          marca_id?: string
+          nombre?: string
+          tema?: string
+          objetivo?: string
+          etapa?: Database['public']['Enums']['etapa_embudo'] | null
+          inicio?: string | null
+          fin?: string | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'campanas_marca_id_fkey'
+            columns: ['marca_id']
+            isOneToOne: false
+            referencedRelation: 'marcas'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'campanas_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      importaciones: {
+        Row: {
+          id: string
+          espacio_id: string
+          usuario_id: string | null
+          archivo: string
+          hoja: string
+          destino: string
+          filas_importadas: number
+          filas_rechazadas: number
+          detalle: Json
+          creado_en: string
+        }
+        Insert: {
+          id?: string
+          espacio_id: string
+          usuario_id?: string | null
+          archivo: string
+          hoja?: string
+          destino: string
+          filas_importadas: number
+          filas_rechazadas: number
+          detalle?: Json
+          creado_en?: string
+        }
+        Update: {
+          id?: string
+          espacio_id?: string
+          usuario_id?: string | null
+          archivo?: string
+          hoja?: string
+          destino?: string
+          filas_importadas?: number
+          filas_rechazadas?: number
+          detalle?: Json
+          creado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'importaciones_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       miembros: {
         Row: {
           creado_en: string
@@ -688,3 +933,7 @@ export type Publicacion = Database['public']['Tables']['publicaciones']['Row']
 export type PublicacionCanal = Database['public']['Tables']['publicacion_canales']['Row']
 export type Comentario = Database['public']['Tables']['comentarios']['Row']
 export type MetricaFila = Database['public']['Tables']['metricas']['Row']
+export type CuentaRed = Database['public']['Tables']['cuentas_red']['Row']
+export type RegistroAuditoria = Database['public']['Tables']['registros_auditoria']['Row']
+export type Campana = Database['public']['Tables']['campanas']['Row']
+export type Importacion = Database['public']['Tables']['importaciones']['Row']

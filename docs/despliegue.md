@@ -40,6 +40,9 @@ Migraciones aplicadas, en orden:
 4. `0004_publicaciones.sql`: publicaciones y sus redes (plantillas 3, 4, 5 y 6 fusionadas).
 5. `0005_revision.sql`: comentarios, historial y funciones `solicitar_revision` / `revisar_publicacion`.
 6. `0006_metricas.sql`: métricas manuales por publicación y red (plantilla 7).
+7. `0007_auditoria.sql`: perfiles por marca y red, registros históricos de auditoría (plantilla 2).
+8. `0008_campanas.sql`: campañas y su relación con publicaciones (plantilla 5).
+9. `0009_importaciones.sql`: registro de importaciones desde Excel/CSV.
 
 Pruebas: ejecutar cada archivo de `supabase/tests/` en el editor SQL. Siempre termina con un error
 "RESULTADO: N fallos" que deshace todo; N debe ser 0.

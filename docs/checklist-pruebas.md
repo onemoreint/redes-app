@@ -96,3 +96,15 @@ Definición de "cumplimiento": de las publicaciones cuya fecha prevista ya pasó
 | 6.6 | Informe por periodo, marca y red; descarga CSV y abrirla en Excel | persona real | pendiente | |
 
 Reglas del informe: cuenta cada publicación en cada red; la fecha es la de publicación real en esa red (si no se anotó, la prevista); la cifra es la medición más reciente.
+
+## Entregas 7 y 8 — Perfiles y auditoría · Campañas
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 7.1 | 22 pruebas SQL (perfiles, auditoría, campañas, importaciones): herencia de espacio; red limpia de espacios; perfil único por red; enlace http(s); un registro por perfil y fecha; sin negativos; nada en otro espacio; campaña con fin ≥ inicio; publicación solo en campaña de su marca (ni de otra marca ni de otro espacio); borrar campaña conserva publicaciones; el registro de importación guarda quién la hizo y no se modifica; revisora solo lee; ajeno no ve; borrar perfil borra su historial | `supabase/tests/0006_auditoria_campanas_importaciones.sql` | aprobado | 2026-10-25 |
+| 7.2 | Columnas calculadas de la auditoría con historial: seguidores y clics vs. mes, tráfico vs. mes y año, alcance vs. semana; sin historial no inventa cambios | `npm test` (auditoria.test.ts) | aprobado | 2026-10-25 |
+| 8.1 | Filtro por campaña en el calendario (una campaña / sin campaña) | `npm test` (calendario.test.ts) | aprobado | 2026-10-25 |
+| 7.3 | Añadir perfiles, registrar fotos, ver historial y cambios, CSV | persona real | pendiente | |
+| 8.2 | Crear campaña, crear publicación dentro, ver avance y resultados, borrar campaña | persona real | pendiente | |
+
+Regla de la auditoría: "el mes pasado" es el registro más reciente con fecha de al menos 30 días antes del actual (semana: 7 días; año: 365).

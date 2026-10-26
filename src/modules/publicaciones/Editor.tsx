@@ -15,6 +15,8 @@ import { useMarcas } from '../marcas/datos'
 import { clavesPub, useCategoriasUsadas, usePublicacion } from './datos'
 import { AccionesRevision, HiloComentarios } from '../revision/componentes'
 import Resultados from '../metricas/Resultados'
+import { useCampanas } from '../campanas/Campanas'
+import { useCuentas } from '../auditoria/Perfiles'
 import { AYUDA_ESTADO, CATEGORIAS_SUGERIDAS, NOMBRE_ESTADO, NOMBRE_ETAPA, TIPOS } from './catalogos'
 
 type CanalForm = { texto_adaptado: string; kpi_esperado: string; enlace_publicado: string; fecha_publicada: string; notas: string }
@@ -34,6 +36,7 @@ type Form = {
   recursos: string
   categoria: string
   etapa: Etapa | ''
+  campana_id: string
   info_adicional: string
   notas: string
   canales: Record<string, CanalForm>
@@ -57,6 +60,8 @@ export default function Editor() {
   const miembros = useMiembros(espacio)
   const categoriasUsadas = useCategoriasUsadas(espacio)
   const existente = usePublicacion(id)
+  const campanas = useCampanas(espacio)
+  const cuentas = useCuentas(espacio)
 
   const [f, setF] = useState<Form | null>(null)
   const [original, setOriginal] = useState<string>('')
@@ -84,6 +89,7 @@ export default function Editor() {
         recursos: '',
         categoria: '',
         etapa: '',
+        campana_id: params.get('campana') ?? '',
         info_adicional: '',
         notas: '',
         canales: {},
@@ -109,6 +115,7 @@ export default function Editor() {
       recursos: p.recursos,
       categoria: p.categoria,
       etapa: p.etapa ?? '',
+      campana_id: p.campana_id ?? '',
       info_adicional: p.info_adicional,
       notas: p.notas,
       canales: Object.fromEntries(
@@ -157,6 +164,7 @@ export default function Editor() {
         recursos: form.recursos.trim(),
         categoria: form.categoria.trim(),
         etapa: form.etapa || null,
+        campana_id: form.campana_id || null,
         info_adicional: form.info_adicional.trim(),
         notas: form.notas.trim(),
       }
@@ -277,6 +285,12 @@ export default function Editor() {
     })
     .filter(Boolean)
 
+  const redesDisponibles = [
+    ...CANALES,
+    ...[...new Set([...(cuentas.data ?? []).filter((c) => c.marca_id === f.marca_id).map((c) => c.canal), ...Object.keys(f.canales)])].filter(
+      (c) => !(CANALES as readonly string[]).includes(c),
+    ),
+  ]
   const categorias = [...new Set([...CATEGORIAS_SUGERIDAS, ...(categoriasUsadas.data ?? [])])].sort((a, b) => a.localeCompare(b, 'es'))
 
   function enviar(e: FormEvent) {
@@ -317,7 +331,15 @@ export default function Editor() {
               error={intentado ? errTitulo : null}
               ayuda="La idea en una frase. Es lo que verás en el calendario."
             />
-            <Selector etiqueta="Marca" value={f.marca_id} onChange={(e) => set('marca_id', e.target.value)}>
+            <Selector
+              etiqueta="Marca"
+              value={f.marca_id}
+              onChange={(e) => {
+                const nueva = e.target.value
+                const sigue = campanas.data?.some((c) => c.id === f.campana_id && c.marca_id === nueva)
+                setF({ ...f, marca_id: nueva, campana_id: sigue ? f.campana_id : '' })
+              }}
+            >
               {(marcas.data ?? [])
                 .filter((m) => !m.archivada || m.id === f.marca_id)
                 .map((m) => (
@@ -424,7 +446,7 @@ export default function Editor() {
 
         <Tarjeta titulo="Redes" descripcion="Marca dónde se publicará. Para cada red puedes adaptar el texto, poner la meta (KPI) y, al publicar, el enlace.">
           <div className="flex flex-wrap gap-2">
-            {CANALES.map((c) => {
+            {redesDisponibles.map((c) => {
               const activo = Boolean(f.canales[c])
               return (
                 <label
@@ -443,7 +465,7 @@ export default function Editor() {
           {Object.keys(f.canales).length > 0 && (
             <div className="mt-4 space-y-3">
               {Object.keys(f.canales)
-                .sort((a, b) => CANALES.indexOf(a as never) - CANALES.indexOf(b as never))
+                .sort((a, b) => redesDisponibles.indexOf(a) - redesDisponibles.indexOf(b))
                 .map((c) => {
                   const datos = f.canales[c]
                   const lim = LIMITE_CARACTERES[c]
@@ -533,6 +555,21 @@ export default function Editor() {
                 ))}
               </datalist>
             </div>
+            <Selector
+              etiqueta="Campaña"
+              value={f.campana_id}
+              onChange={(e) => set('campana_id', e.target.value)}
+              ayuda="Solo campañas de la misma marca."
+            >
+              <option value="">Ninguna</option>
+              {(campanas.data ?? [])
+                .filter((c) => c.marca_id === f.marca_id)
+                .map((c) => (
+                  <option key={c.id} value={c.id}>
+                    {c.nombre}
+                  </option>
+                ))}
+            </Selector>
             <Selector
               etiqueta="Etapa del embudo"
               value={f.etapa}

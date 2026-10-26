@@ -102,6 +102,8 @@ describe('Agrupar y filtrar', () => {
     expect(ids({ responsable: 'sin' })).toEqual(['1', '3', '4', '5'])
     expect(ids({ categoria: 'Video' })).toEqual(['1'])
     expect(ids({ texto: 'NAVIDAD' })).toEqual(['5'])
+    expect(filtrar([...lista, p({ id: '6', campana_id: 'c1' })], { campana: 'c1' }, ahora).map((x) => x.id)).toEqual(['6'])
+    expect(filtrar([...lista, p({ id: '6', campana_id: 'c1' })], { campana: 'sin' }, ahora)).toHaveLength(5)
     expect(ids({})).toHaveLength(5)
   })
 })
