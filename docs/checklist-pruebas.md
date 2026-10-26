@@ -73,3 +73,13 @@ Límites de caracteres por red (solo avisos): referencia Buffer, consultada el 2
 | 4.3 | Pedir revisión desde el editor; la bandeja muestra la pendiente y el contador del menú | dos cuentas reales | pendiente | |
 | 4.4 | Revisor aprueba y devuelve con motivo; el editor la ve en "Devueltas" | dos cuentas reales | pendiente | |
 | 4.5 | Comentar, borrar mi comentario, historial con autor y hora | persona real | pendiente | |
+
+## Entrega 5 — Panel principal
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 5.1 | El tablero mensual reproduce con fechas reales los conteos del Excel (semanas de 16, 20, 20 y 20; por día y por formato) e ignora lo que está fuera del mes | `npm test` (tablero.test.ts) | aprobado | 2026-10-25 |
+| 5.2 | Cumplimiento del calendario = publicadas ÷ debidas, sin descartadas ni futuras; sin datos no inventa porcentaje | `npm test` | aprobado | 2026-10-25 |
+| 5.3 | Panel con datos reales: próximas, atrasadas, pendientes, en proceso, tablero por mes y marca | persona real | pendiente | |
+
+Definición de "cumplimiento": de las publicaciones cuya fecha prevista ya pasó (sin contar descartadas), qué porcentaje está en estado Publicado. Es un indicador nuevo; las plantillas no lo calculaban.
