@@ -14,6 +14,7 @@ import Campanas, { FichaCampana } from './modules/campanas/Campanas'
 import Perfiles from './modules/auditoria/Perfiles'
 import Informes from './modules/metricas/Informes'
 import Revision from './modules/revision/Revision'
+import Importar from './modules/importar/Importar'
 import Calendario from './modules/publicaciones/Calendario'
 import EditorPublicacion from './modules/publicaciones/Editor'
 import FichaMarca from './modules/marcas/FichaMarca'
@@ -109,6 +110,7 @@ export default function App() {
                       <Route path="publicaciones/:id" element={<EditorPublicacion />} />
                       <Route path="revision" element={<Revision />} />
                       <Route path="informes" element={<Informes />} />
+                      <Route path="importar" element={<Importar />} />
                       <Route path="campanas" element={<Campanas />} />
                       <Route path="campanas/:id" element={<FichaCampana />} />
                       <Route path="perfiles" element={<Perfiles />} />

@@ -8,6 +8,7 @@ import { Aviso, Boton, Campo, DialogoConfirmar, Encabezado, Selector, Tarjeta, u
 import { claveEspacios, useEspacio } from '../../app/espacio'
 import { useSesion } from '../../app/sesion'
 import { zonasHorarias } from './zonas'
+import { CopiaSeguridad } from './CopiaSeguridad'
 
 export default function AjustesEspacio() {
   const { actual } = useEspacio()
@@ -97,6 +98,8 @@ export default function AjustesEspacio() {
           )}
         </form>
       </Tarjeta>
+
+      {esAdmin && <CopiaSeguridad espacio={actual!} />}
 
       {esAdmin && (
         <Tarjeta titulo="Borrar el espacio" descripcion="Borra el espacio y todo lo que contiene para todos sus miembros. No se puede deshacer.">

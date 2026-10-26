@@ -15,6 +15,7 @@ const ENLACES: { a: string; texto: string; fin?: boolean; contador?: boolean }[]
   { a: '/campanas', texto: 'Campañas' },
   { a: '/informes', texto: 'Informes' },
   { a: '/perfiles', texto: 'Perfiles y auditoría' },
+  { a: '/importar', texto: 'Importar' },
   { a: '/marcas', texto: 'Marcas' },
   { a: '/miembros', texto: 'Miembros' },
   { a: '/ajustes', texto: 'Ajustes del espacio' },

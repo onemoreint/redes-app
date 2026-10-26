@@ -8,7 +8,7 @@ import { puede } from '../../lib/roles'
 import { CANALES } from '../../lib/canales'
 import { aNumero } from '../../lib/numeros'
 import { compararAuditoria, type Comparacion } from '../../lib/calculos/auditoria'
-import { aCSV, descargar } from '../../lib/csv'
+import { exportarTabla, type Formato } from '../../lib/exportar'
 import { Aviso, Boton, Campo, Cargando, DialogoConfirmar, Encabezado, Selector, Tarjeta, useNotas } from '../../components/ui'
 import { useEspacio } from '../../app/espacio'
 import { hoyEn, useMarcas } from '../marcas/datos'
@@ -90,11 +90,11 @@ export default function Perfiles() {
     onError: (e) => avisar(mensajeError(e), 'error'),
   })
 
-  function exportar() {
+  function exportar(formato: Formato) {
     const m = marcas.data?.find((x) => x.id === marca)
-    descargar(
-      `auditoria-${(m?.nombre ?? 'marca').replace(/[^\p{L}\p{N}]+/gu, '-')}-${hoyEn(actual!.zona_horaria)}.csv`,
-      aCSV(
+    void exportarTabla(
+      formato,
+      `auditoria-${(m?.nombre ?? 'marca').replace(/[^\p{L}\p{N}]+/gu, '-')}-${hoyEn(actual!.zona_horaria)}`,
         ['Red', 'Perfil', 'Enlace', 'Fecha del registro', 'Seguidores', 'Cambio de seguidores (mes)', '% cambio seguidores (mes)', 'Última actividad', 'Frecuencia', 'Tráfico de referencia mensual', '% cambio tráfico (mes)', '% cambio tráfico (año)', 'Clics por publicación', 'Cambio de clics por publicación (mes)', 'Alcance', '% cambio alcance (semana)'],
         filas.map(({ cuenta: c, comp }) => [
           c.canal,
@@ -114,7 +114,7 @@ export default function Perfiles() {
           comp?.actual.alcance,
           comp?.alcanceSemana.porcentaje,
         ]),
-      ),
+      'Auditoría',
     )
   }
 
@@ -123,7 +123,14 @@ export default function Perfiles() {
       <Encabezado
         titulo="Perfiles y auditoría"
         descripcion="Las cuentas de cada marca en cada red y una «foto» periódica de su estado. Los cambios frente a la semana, el mes o el año pasados se calculan con el historial."
-        acciones={filas.length > 0 ? <Boton variante="secundario" onClick={exportar}>Descargar CSV</Boton> : undefined}
+        acciones={
+          filas.length > 0 ? (
+            <div className="flex gap-2">
+              <Boton variante="secundario" onClick={() => exportar('xlsx')}>Descargar Excel</Boton>
+              <Boton variante="secundario" onClick={() => exportar('csv')}>CSV</Boton>
+            </div>
+          ) : undefined
+        }
       />
 
       {marcas.data && marcas.data.length === 0 && (

@@ -108,3 +108,33 @@ Reglas del informe: cuenta cada publicación en cada red; la fecha es la de publ
 | 8.2 | Crear campaña, crear publicación dentro, ver avance y resultados, borrar campaña | persona real | pendiente | |
 
 Regla de la auditoría: "el mes pasado" es el registro más reciente con fecha de al menos 30 días antes del actual (semana: 7 días; año: 365).
+
+## Entrega 9 — Importar y exportar (Excel / CSV)
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 9.1 | Lectura de CSV (`;` `,` tabulador, comillas, saltos de línea, BOM) y de .xlsx (texto enriquecido, fórmulas con su último resultado, enlaces, hojas ocultas fuera) | `npm test` (importar.test.ts, excel.test.ts) | aprobado | 2026-10-26 |
+| 9.2 | Detección de la fila de encabezados y correspondencia de columnas con los nombres de las plantillas, incluida la traducción automática (CORREO = post, GORJEO = X, Vinculado = LinkedIn, ALCANZAR = alcance); no confunde columnas "del mes pasado" | `npm test` | aprobado | 2026-10-26 |
+| 9.3 | Estructuras reales: Plan de contenido (bloques por red, encabezados repetidos por mes), Multicanal (red en una columna, "Asignado a" a notas), Tablero (formatos TEXTO/IMAGEN/VIDEO, semana y día a notas); las listas de valores de ejemplo no se importan como publicaciones | `npm test` y lectura local de las 7 plantillas originales (no se suben al repositorio) | aprobado | 2026-10-26 |
+| 9.4 | Conversión de fechas (día/mes/año, año-mes-día, número de serie de Excel; fechas imposibles rechazadas), horas, estados en español traducido e inglés, etapas y marcas de red | `npm test` | aprobado | 2026-10-26 |
+| 9.5 | Validación por fila con motivo; posibles duplicados (mismo título y día, o misma red/perfil/fecha en auditoría) marcados y no importados salvo que se pida; nunca se sobrescribe | `npm test` | aprobado | 2026-10-26 |
+| 9.6 | Exportar a .xlsx y volver a leerlo igual; textos que empiezan por = + - @ neutralizados | `npm test` (excel.test.ts) | aprobado | 2026-10-26 |
+| 9.7 | ExcelJS se carga solo al importar o exportar (bloque aparte en la compilación) | `npm run build` | aprobado | 2026-10-26 |
+| 9.8 | Importar cada plantilla propia (con datos) a una marca: vista previa, rechazos con motivo, resultado en el calendario / auditoría, historial de importaciones | persona real | pendiente | |
+| 9.9 | Descargar Excel del calendario, informes y auditoría y abrirlos en Excel | persona real | pendiente | |
+| 9.10 | Copia de seguridad (.json) del espacio desde Ajustes (solo administradores) | persona real | pendiente | |
+
+Reglas de importación:
+
+- Estados de las plantillas:
+  - "al corriente" / Posted → Publicado
+  - "en espera" / On hold → En pausa
+  - "animado" / Nixed → Descartado
+  - "en curso", "atrasado", "actualización de necesidades" → Borrador
+  - "necesita revisión" → En revisión
+  - "no comenzó" → Idea
+- Sin estado: Borrador si tiene fecha, Idea si no.
+- "Programado" sin fecha → Aprobado, con aviso.
+- Una fila sin título, fecha, texto, hashtags, CTA, notas ni redes marcadas se ignora.
+- Sin título pero con texto: el título es el comienzo del texto, con aviso.
+- La plantilla de informe (IC 8857) y la de plan estratégico son resúmenes: sus datos se registran en Informes / Marcas → Estrategia, no se importan.

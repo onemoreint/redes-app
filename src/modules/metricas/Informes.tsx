@@ -8,7 +8,7 @@ import { CANALES } from '../../lib/canales'
 import { compromiso, type Metrica } from '../../lib/calculos/metricas'
 import { generarInforme, variacion, type ResultadoRed } from '../../lib/calculos/informe'
 import { diasDeSemana, partesLocales, rangoUTC, sumarDias } from '../../lib/calculos/calendario'
-import { aCSV, descargar } from '../../lib/csv'
+import { exportarTabla, type Formato } from '../../lib/exportar'
 import { Aviso, Boton, Campo, Cargando, Encabezado, Selector, Tarjeta } from '../../components/ui'
 import { useEspacio } from '../../app/espacio'
 import { hoyEn, useMarcas } from '../marcas/datos'
@@ -129,7 +129,7 @@ export default function Informes() {
     return new Date(`${dia}T12:00:00`).toLocaleDateString('es', { day: 'numeric', month: 'short' })
   }
 
-  function exportar() {
+  function exportar(formato: Formato) {
     if (!informe || !rango) return
     const filas = informe.lista
       .filter((r) => r.fecha >= rango.desde && r.fecha < rango.hasta)
@@ -150,12 +150,12 @@ export default function Informes() {
         compromiso(r),
         'manual',
       ])
-    descargar(
-      `informe-${actual!.nombre.replace(/[^\p{L}\p{N}]+/gu, '-')}-${dias.desde}-a-${dias.hasta}.csv`,
-      aCSV(
+    void exportarTabla(
+      formato,
+      `informe-${actual!.nombre.replace(/[^\p{L}\p{N}]+/gu, '-')}-${dias.desde}-a-${dias.hasta}`,
         ['Fecha', 'Marca', 'Publicación', 'Red', 'Alcance', 'Impresiones', 'Me gusta', 'Comentarios', 'Compartidos', 'Guardados', 'Clics', 'Menciones', 'Compromiso', 'Origen del dato'],
         filas,
-      ),
+      'Informe',
     )
   }
 
@@ -168,9 +168,10 @@ export default function Informes() {
         descripcion="Resultados de tus publicaciones por periodo. Las cifras son las que registras a mano en cada publicación; la app no se conecta con las redes."
         acciones={
           inf && inf.actual.publicaciones > 0 ? (
-            <Boton variante="secundario" onClick={exportar}>
-              Descargar CSV
-            </Boton>
+            <div className="flex gap-2">
+              <Boton variante="secundario" onClick={() => exportar('xlsx')}>Descargar Excel</Boton>
+              <Boton variante="secundario" onClick={() => exportar('csv')}>CSV</Boton>
+            </div>
           ) : undefined
         }
       />

@@ -26,6 +26,7 @@ import { hoyEn, useMarcas } from '../marcas/datos'
 import { clavesPub, usePublicacionesRango, usePublicacionesSinFecha, type PublicacionConCanales } from './datos'
 import { COLOR_ESTADO, NOMBRE_ESTADO } from './catalogos'
 import { useCampanas } from '../campanas/Campanas'
+import { exportarTabla } from '../../lib/exportar'
 
 type Vista = 'mes' | 'semana' | 'lista'
 const DIAS_CORTOS = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
@@ -160,17 +161,56 @@ export default function Calendario() {
     )
   }
 
+  function exportarVisibles() {
+    const lista = [...visibles].sort((a, b) => (a.fecha_prevista ?? '').localeCompare(b.fecha_prevista ?? ''))
+    const campanaPorId = new Map((campanas.data ?? []).map((c) => [c.id, c.nombre]))
+    void exportarTabla(
+      'xlsx',
+      `calendario-${actual!.nombre.replace(/[^\p{L}\p{N}]+/gu, '-')}-${desde}-a-${hasta}`,
+      ['Fecha', 'Hora', 'Marca', 'Título', 'Estado', 'Atrasada', 'Redes', 'Campaña', 'Categoría', 'Etapa', 'Formato', 'Texto', 'Hashtags', 'Llamado a la acción', 'Responsable', 'Notas'],
+      lista.map((p) => {
+        const local = p.fecha_prevista ? partesLocales(p.fecha_prevista, zona) : null
+        return [
+          local?.dia ?? '',
+          local?.hora ?? '',
+          marcaPorId.get(p.marca_id)?.nombre ?? '',
+          p.titulo,
+          NOMBRE_ESTADO[p.estado],
+          estaAtrasada({ estado: p.estado, fechaPrevista: p.fecha_prevista }, ahora) ? 'Sí' : 'No',
+          p.canales.join(', '),
+          p.campana_id ? (campanaPorId.get(p.campana_id) ?? '') : '',
+          p.categoria,
+          p.etapa ?? '',
+          p.tipos.join(', '),
+          p.texto,
+          p.hashtags,
+          p.cta,
+          p.responsable_id ? nombreDe(miembros.data?.find((m) => m.usuario_id === p.responsable_id)) : '',
+          p.notas,
+        ]
+      }),
+      'Calendario',
+    )
+  }
+
   return (
     <div className="space-y-5">
       <Encabezado
         titulo="Calendario editorial"
         descripcion="Planifica, mueve y sigue tus publicaciones. Arrastra una tarjeta a otro día para cambiar su fecha."
         acciones={
-          editable && !sinMarcas ? (
-            <Boton onClick={() => navegar(`/publicaciones/nueva?fecha=${vista === 'mes' && fecha.slice(0, 7) !== hoy.slice(0, 7) ? fecha : hoy}`)}>
-              Nueva publicación
-            </Boton>
-          ) : undefined
+          <div className="flex flex-wrap gap-2">
+            {visibles.length > 0 && (
+              <Boton variante="secundario" onClick={exportarVisibles} title="Descarga las publicaciones del periodo visible, con los filtros aplicados">
+                Descargar Excel
+              </Boton>
+            )}
+            {editable && !sinMarcas && (
+              <Boton onClick={() => navegar(`/publicaciones/nueva?fecha=${vista === 'mes' && fecha.slice(0, 7) !== hoy.slice(0, 7) ? fecha : hoy}`)}>
+                Nueva publicación
+              </Boton>
+            )}
+          </div>
         }
       />
 
