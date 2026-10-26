@@ -55,7 +55,7 @@ export default function Inicio() {
         <ol className="list-decimal space-y-1 pl-5 text-sm text-stone-700">
           <li className="text-stone-400 line-through">Cuentas, espacios de trabajo, miembros y roles</li>
           <li className="text-stone-400 line-through">Marcas y estrategia</li>
-          <li>Publicaciones y calendario editorial</li>
+          <li className="text-stone-400 line-through">Publicaciones y calendario editorial</li>
           <li>Revisión y aprobación</li>
           <li>Panel principal</li>
           <li>Métricas e informes</li>

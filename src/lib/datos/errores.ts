@@ -25,6 +25,7 @@ const POR_PISTA_BD: Record<string, string> = {
   usada: 'Esta invitación ya fue usada.',
   vencida: 'La invitación venció. Pide a quien te invitó que te envíe una nueva.',
   otro_correo: 'Esta invitación es para otro correo. Entra con la cuenta del correo invitado.',
+  responsable_no_miembro: 'La persona responsable debe ser miembro de este espacio.',
 }
 
 type ErrorConocido = { code?: string; message?: string; hint?: string; status?: number; name?: string }

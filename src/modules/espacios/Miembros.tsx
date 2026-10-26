@@ -3,13 +3,13 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 import { supabase, urlApp } from '../../lib/datos/supabase'
 import { exigir, mensajeError } from '../../lib/datos/errores'
-import type { Invitacion, Perfil, Rol } from '../../lib/datos/tipos-bd'
+import type { Invitacion, Rol } from '../../lib/datos/tipos-bd'
+import { useMiembros, type FilaMiembro } from '../../app/miembros'
 import { DESCRIPCION_ROL, NOMBRE_ROL, ROLES, puede } from '../../lib/roles'
 import { Aviso, Boton, Campo, Cargando, DialogoConfirmar, Encabezado, Selector, Tarjeta, useNotas } from '../../components/ui'
 import { claveEspacios, useEspacio } from '../../app/espacio'
 import { useSesion } from '../../app/sesion'
 
-type FilaMiembro = { usuario_id: string; rol: Rol; creado_en: string; perfil: Perfil | null }
 
 const fecha = (iso: string) => new Date(iso).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' })
 
@@ -27,17 +27,7 @@ export default function Miembros() {
   const esAdmin = puede.administrarEspacio(actual?.rol)
   const espacioId = actual!.id
 
-  const miembros = useQuery({
-    queryKey: ['miembros', espacioId],
-    queryFn: async (): Promise<FilaMiembro[]> => {
-      const filas = exigir(await supabase.from('miembros').select('usuario_id, rol, creado_en').eq('espacio_id', espacioId))
-      const ids = filas.map((f) => f.usuario_id)
-      const perfiles = ids.length ? exigir(await supabase.from('perfiles').select('*').in('id', ids)) : []
-      return filas
-        .map((f) => ({ ...f, perfil: perfiles.find((p) => p.id === f.usuario_id) ?? null }))
-        .sort((a, b) => ROLES.indexOf(a.rol) - ROLES.indexOf(b.rol) || (a.perfil?.nombre ?? '').localeCompare(b.perfil?.nombre ?? '', 'es'))
-    },
-  })
+  const miembros = useMiembros(espacioId)
 
   const cambiarRol = useMutation({
     mutationFn: async ({ usuario, rol }: { usuario: string; rol: Rol }) => {

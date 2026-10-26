@@ -48,3 +48,18 @@ Nota sobre pruebas con cuentas: Claude no crea cuentas ni escribe contraseñas e
 | 2.6 | Crear marca, completar estrategia (se guarda sola), recargar y ver los datos | persona real | pendiente | |
 | 2.7 | Crear, editar y eliminar objetivos; archivar, restaurar y borrar marca | persona real | pendiente | |
 | 2.8 | Con rol Revisor: todo en solo lectura | persona real | pendiente | |
+
+## Entrega 3 — Publicaciones y calendario editorial
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 3.1 | 22 pruebas SQL: espacio fijado por la marca; tipos sin repetidos; no se programa sin fecha; la pausa recuerda y limpia el estado anterior; el estado anterior no se edita desde el navegador; responsable debe ser miembro (y se conserva si luego sale); no se mueve a marca de otro espacio; canal único por publicación; enlace solo http(s); revisora solo lee; ajeno no ve ni inyecta; borrar marca borra publicaciones y canales | `supabase/tests/0003_publicaciones.sql` | aprobado | 2026-10-25 |
+| 3.2 | Calendario: semanas de lunes a domingo, meses con semanas completas, años bisiestos | `npm test` (calendario.test.ts) | aprobado | 2026-10-25 |
+| 3.3 | Zona horaria: 23:30 en Bogotá cae en su día; mover de día conserva la hora local aun con cambio de horario de verano (Nueva York) | `npm test` | aprobado | 2026-10-25 |
+| 3.4 | Filtros por marca, red, estado, atrasadas, responsable, categoría y texto (la prueba detectó y se corrigió un error en "atrasadas") | `npm test` | aprobado | 2026-10-25 |
+| 3.5 | Crear publicación desde el calendario y desde un día concreto; editar; recargar | persona real | pendiente | |
+| 3.6 | Arrastrar una tarjeta a otro día y una idea al calendario | persona real (escritorio) | pendiente | |
+| 3.7 | Vistas mes, semana, lista y agenda en el teléfono | persona real | pendiente | |
+| 3.8 | Redes: marcar, adaptar texto, aviso de límite, enlace publicado | persona real | pendiente | |
+
+Límites de caracteres por red (solo avisos): referencia Buffer, consultada el 2026-10-25 — X 280 (cuentas gratuitas), Instagram 2.200, Facebook 5.000, LinkedIn 3.000, TikTok 2.200, Threads 500 (cuenta bytes), Pinterest 500, YouTube 5.000.

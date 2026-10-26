@@ -10,6 +10,8 @@ import Miembros from './modules/espacios/Miembros'
 import AjustesEspacio from './modules/espacios/AjustesEspacio'
 import AceptarInvitacion from './modules/espacios/AceptarInvitacion'
 import Marcas from './modules/marcas/Marcas'
+import Calendario from './modules/publicaciones/Calendario'
+import EditorPublicacion from './modules/publicaciones/Editor'
 import FichaMarca from './modules/marcas/FichaMarca'
 import { FormularioCrearEspacio } from './modules/espacios/CrearEspacio'
 import { Aviso, Cargando, Encabezado, ProveedorNotas, Tarjeta } from './components/ui'
@@ -98,6 +100,9 @@ export default function App() {
                   <Route element={<ConEspacio />}>
                     <Route element={<Estructura />}>
                       <Route index element={<Inicio />} />
+                      <Route path="calendario" element={<Calendario />} />
+                      <Route path="publicaciones/nueva" element={<EditorPublicacion key="nueva" />} />
+                      <Route path="publicaciones/:id" element={<EditorPublicacion />} />
                       <Route path="marcas" element={<Marcas />} />
                       <Route path="marcas/:id" element={<FichaMarca />} />
                       <Route path="miembros" element={<Miembros />} />

@@ -9,6 +9,7 @@ import { Selector } from '../components/ui'
 
 const ENLACES = [
   { a: '/', texto: 'Inicio', fin: true },
+  { a: '/calendario', texto: 'Calendario' },
   { a: '/marcas', texto: 'Marcas' },
   { a: '/miembros', texto: 'Miembros' },
   { a: '/ajustes', texto: 'Ajustes del espacio' },

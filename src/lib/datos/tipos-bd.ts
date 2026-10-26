@@ -325,6 +325,156 @@ export type Database = {
           },
         ]
       }
+      publicaciones: {
+        Row: {
+          id: string
+          espacio_id: string
+          marca_id: string
+          titulo: string
+          info_adicional: string
+          categoria: string
+          etapa: Database['public']['Enums']['etapa_embudo'] | null
+          tipos: string[]
+          texto: string
+          hashtags: string
+          cta: string
+          recursos: string
+          responsable_id: string | null
+          fecha_prevista: string | null
+          estado: Database['public']['Enums']['estado_publicacion']
+          estado_anterior: Database['public']['Enums']['estado_publicacion'] | null
+          notas: string
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          espacio_id: string
+          marca_id: string
+          titulo: string
+          info_adicional?: string
+          categoria?: string
+          etapa?: Database['public']['Enums']['etapa_embudo'] | null
+          tipos?: string[]
+          texto?: string
+          hashtags?: string
+          cta?: string
+          recursos?: string
+          responsable_id?: string | null
+          fecha_prevista?: string | null
+          estado?: Database['public']['Enums']['estado_publicacion']
+          estado_anterior?: Database['public']['Enums']['estado_publicacion'] | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          espacio_id?: string
+          marca_id?: string
+          titulo?: string
+          info_adicional?: string
+          categoria?: string
+          etapa?: Database['public']['Enums']['etapa_embudo'] | null
+          tipos?: string[]
+          texto?: string
+          hashtags?: string
+          cta?: string
+          recursos?: string
+          responsable_id?: string | null
+          fecha_prevista?: string | null
+          estado?: Database['public']['Enums']['estado_publicacion']
+          estado_anterior?: Database['public']['Enums']['estado_publicacion'] | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'publicaciones_marca_id_fkey'
+            columns: ['marca_id']
+            isOneToOne: false
+            referencedRelation: 'marcas'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'publicaciones_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      publicacion_canales: {
+        Row: {
+          id: string
+          publicacion_id: string
+          espacio_id: string
+          canal: string
+          texto_adaptado: string
+          kpi_esperado: string
+          enlace_publicado: string
+          fecha_publicada: string | null
+          notas: string
+          creado_por: string | null
+          creado_en: string
+          actualizado_por: string | null
+          actualizado_en: string
+        }
+        Insert: {
+          id?: string
+          publicacion_id: string
+          espacio_id: string
+          canal: string
+          texto_adaptado?: string
+          kpi_esperado?: string
+          enlace_publicado?: string
+          fecha_publicada?: string | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Update: {
+          id?: string
+          publicacion_id?: string
+          espacio_id?: string
+          canal?: string
+          texto_adaptado?: string
+          kpi_esperado?: string
+          enlace_publicado?: string
+          fecha_publicada?: string | null
+          notas?: string
+          creado_por?: string | null
+          creado_en?: string
+          actualizado_por?: string | null
+          actualizado_en?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'publicacion_canales_publicacion_id_fkey'
+            columns: ['publicacion_id']
+            isOneToOne: false
+            referencedRelation: 'publicaciones'
+            referencedColumns: ['id']
+          },
+          {
+            foreignKeyName: 'publicacion_canales_espacio_id_fkey'
+            columns: ['espacio_id']
+            isOneToOne: false
+            referencedRelation: 'espacios'
+            referencedColumns: ['id']
+          },
+        ]
+      }
       miembros: {
         Row: {
           creado_en: string
@@ -396,6 +546,8 @@ export type Database = {
     Enums: {
       rol_miembro: 'administrador' | 'editor' | 'revisor' | 'lector'
       estado_objetivo: 'activo' | 'logrado' | 'revisado' | 'abandonado'
+      estado_publicacion: 'idea' | 'borrador' | 'en_revision' | 'aprobado' | 'programado' | 'publicado' | 'en_pausa' | 'descartado'
+      etapa_embudo: 'conciencia' | 'investigacion' | 'decision' | 'compra' | 'retencion'
     }
     CompositeTypes: { [_ in never]: never }
   }
@@ -410,3 +562,5 @@ export type Marca = Database['public']['Tables']['marcas']['Row']
 export type Estrategia = Database['public']['Tables']['estrategias']['Row']
 export type Objetivo = Database['public']['Tables']['objetivos']['Row']
 export type EstadoObjetivo = Database['public']['Enums']['estado_objetivo']
+export type Publicacion = Database['public']['Tables']['publicaciones']['Row']
+export type PublicacionCanal = Database['public']['Tables']['publicacion_canales']['Row']
