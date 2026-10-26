@@ -15,3 +15,23 @@ Estados: **aprobado** (se ejecutó y pasó), **fallido** (se ejecutó y falló),
 | 0.7 | Vista en móvil (390 px) y escritorio | navegador (375 px y escritorio) | aprobado | 2026-10-25 |
 
 Nota 0.6: la consola muestra un 404 de `/favicon.ico` en la raíz del dominio (petición automática del navegador). No afecta a la app; el icono propio se sirve desde `/redes-app/favicon.svg`.
+
+## Entrega 1 — Cuentas, espacios, miembros y roles
+
+| # | Prueba | Cómo | Estado | Fecha |
+| --- | --- | --- | --- | --- |
+| 1.1 | 30 pruebas SQL de acceso: un ajeno no ve ni toca nada; solo administradores invitan, cambian roles y borran; la invitación solo sirve al correo invitado, una vez y antes de vencer; el último administrador no puede salir ni bajarse de rol; zona horaria válida; funciones privadas cerradas al público | `supabase/tests/0001_acceso.sql` en el editor SQL | aprobado | 2026-10-25 |
+| 1.2 | Avisos de seguridad de Supabase revisados; funciones internas movidas a esquema privado; índices de claves foráneas | Supabase advisors | aprobado | 2026-10-25 |
+| 1.3 | Tipos, 22 pruebas de cálculos y compilación en GitHub Actions | push a `main` | aprobado | 2026-10-25 |
+| 1.4 | Sin sesión: `/` y rutas internas llevan a "Entrar" y vuelven a la ruta pedida tras entrar | navegador, URL pública | aprobado | 2026-10-25 |
+| 1.5 | Enlace de invitación sin sesión ofrece "Crear cuenta" / "Ya tengo cuenta" | navegador, URL pública | aprobado | 2026-10-25 |
+| 1.6 | Pantallas de entrar y crear cuenta en móvil (375 px) y escritorio | navegador | aprobado | 2026-10-25 |
+| 1.7 | Crear cuenta, confirmar correo y entrar | persona real | pendiente | |
+| 1.8 | Crear primer espacio; recargar y que siga ahí | persona real | pendiente | |
+| 1.9 | Invitar a otra cuenta por enlace, aceptar, ver el rol correcto | dos cuentas reales | pendiente | |
+| 1.10 | Cambiar rol, quitar miembro, salir, borrar espacio con confirmación | dos cuentas reales | pendiente | |
+| 1.11 | Recuperar contraseña por correo | persona real | pendiente | |
+
+Nota: las direcciones internas (`/miembros`, `/invitacion/...`) se sirven desde `404.html`, que contiene la app (técnica estándar para apps de una página en GitHub Pages). El navegador registra un 404 en la consola, pero la página funciona.
+
+Nota sobre pruebas con cuentas: Claude no crea cuentas ni escribe contraseñas en la app publicada; las pruebas 1.7 a 1.11 las hace una persona.
